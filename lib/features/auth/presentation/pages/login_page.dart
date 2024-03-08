@@ -38,74 +38,80 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.message,
-                size: 80,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              const BoxSpacer(
-                size: 50,
-              ),
-              Text(
-                Presents.welcomeBack,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              const BoxSpacer(
-                size: 50,
-              ),
-              MyTextField(
-                controller: emailController,
-                labelText: Presents.email,
-                hintText: Presents.exampleEmail,
-                validator: emailValidator,
-              ),
-              const BoxSpacer(),
-              MyTextField(
-                controller: passwordController,
-                labelText: Presents.password,
-                hintText: Presents.examplePassword,
-                isObscure: isObscure,
-                icon: IconButton(
-                  icon: Icon(
-                    isObscure ? Icons.remove_red_eye : Icons.visibility_off,
-                  ),
-                  onPressed: () => setState(() {
-                    isObscure = !isObscure;
-                  }),
-                ),
-                validator: (value) =>
-                    passwordValidator(value, passwordController.text),
-              ),
-              const BoxSpacer(),
-              MyButton(
-                text: Presents.login,
-                onTap: login,
-              ),
-              const BoxSpacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
                 children: [
-                  const Text(Presents.signUp),
-                  TextButton(
-                    onPressed: widget.onPressed,
-                    child: Text(
-                      Presents.signUp,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.message,
+                      size: 80,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
+                  ),
+                  const BoxSpacer(
+                    size: 50,
+                  ),
+                  Text(
+                    Presents.welcomeBack,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  const BoxSpacer(
+                    size: 50,
+                  ),
+                  MyTextField(
+                    controller: emailController,
+                    labelText: Presents.email,
+                    hintText: Presents.exampleEmail,
+                    validator: emailValidator,
+                  ),
+                  const BoxSpacer(),
+                  MyTextField(
+                    controller: passwordController,
+                    labelText: Presents.password,
+                    hintText: Presents.examplePassword,
+                    isObscure: isObscure,
+                    icon: IconButton(
+                      icon: Icon(
+                        isObscure ? Icons.remove_red_eye : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() {
+                        isObscure = !isObscure;
+                      }),
+                    ),
+                    validator: (value) =>
+                        passwordValidator(value, passwordController.text),
+                  ),
+                  const BoxSpacer(),
+                  MyButton(
+                    text: Presents.login,
+                    onTap: login,
+                  ),
+                  const BoxSpacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(Presents.signUp),
+                      TextButton(
+                        onPressed: widget.onPressed,
+                        child: Text(
+                          Presents.signUp,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),

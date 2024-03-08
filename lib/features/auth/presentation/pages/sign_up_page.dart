@@ -39,91 +39,97 @@ class _SignUpPageState extends State<SignUpPage> {
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.background,
       body: SafeArea(
-        child: Form(
-          key: formKey,
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Icon(
-                Icons.message,
-                size: 80,
-                color: Theme.of(context).colorScheme.primary,
-              ),
-              const BoxSpacer(
-                size: 50,
-              ),
-              Text(
-                Presents.welcome,
-                style: TextStyle(
-                  fontSize: 20,
-                  color: Theme.of(context).colorScheme.primary,
-                ),
-              ),
-              const BoxSpacer(
-                size: 50,
-              ),
-              MyTextField(
-                controller: emailController,
-                labelText: Presents.email,
-                hintText: Presents.exampleEmail,
-                validator: emailValidator,
-              ),
-              const BoxSpacer(),
-              MyTextField(
-                controller: passwordController,
-                labelText: Presents.password,
-                hintText: Presents.examplePassword,
-                isObscure: isObscure,
-                icon: IconButton(
-                  icon: Icon(
-                    isObscure ? Icons.remove_red_eye : Icons.visibility_off,
-                  ),
-                  onPressed: () => setState(() {
-                    isObscure = !isObscure;
-                  }),
-                ),
-                validator: (value) =>
-                    passwordValidator(value, passwordController.text),
-              ),
-              const BoxSpacer(),
-              MyTextField(
-                controller: passwordConfirmController,
-                labelText: Presents.password,
-                hintText: Presents.examplePassword,
-                isObscure: isObscure,
-                icon: IconButton(
-                  icon: Icon(
-                    isObscure ? Icons.remove_red_eye : Icons.visibility_off,
-                  ),
-                  onPressed: () => setState(() {
-                    isObscure = !isObscure;
-                  }),
-                ),
-                validator: (value) =>
-                    passwordValidator(value, passwordController.text),
-              ),
-              const BoxSpacer(),
-              MyButton(
-                text: Presents.signUp,
-                onTap: signIn,
-              ),
-              const BoxSpacer(),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+        child: Center(
+          child: SingleChildScrollView(
+            child: Form(
+              key: formKey,
+              child: Column(
                 children: [
-                  const Text(Presents.alreadyAMember),
-                  TextButton(
-                    onPressed: widget.onPressed,
-                    child: Text(
-                      Presents.login,
-                      style: TextStyle(
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
+                  Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Icon(
+                      Icons.message,
+                      size: 80,
+                      color: Theme.of(context).colorScheme.primary,
                     ),
+                  ),
+                  const BoxSpacer(
+                    size: 50,
+                  ),
+                  Text(
+                    Presents.welcome,
+                    style: TextStyle(
+                      fontSize: 20,
+                      color: Theme.of(context).colorScheme.primary,
+                    ),
+                  ),
+                  const BoxSpacer(
+                    size: 50,
+                  ),
+                  MyTextField(
+                    controller: emailController,
+                    labelText: Presents.email,
+                    hintText: Presents.exampleEmail,
+                    validator: emailValidator,
+                  ),
+                  const BoxSpacer(),
+                  MyTextField(
+                    controller: passwordController,
+                    labelText: Presents.password,
+                    hintText: Presents.examplePassword,
+                    isObscure: isObscure,
+                    icon: IconButton(
+                      icon: Icon(
+                        isObscure ? Icons.remove_red_eye : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() {
+                        isObscure = !isObscure;
+                      }),
+                    ),
+                    validator: (value) =>
+                        passwordValidator(value, passwordController.text),
+                  ),
+                  const BoxSpacer(),
+                  MyTextField(
+                    controller: passwordConfirmController,
+                    labelText: Presents.password,
+                    hintText: Presents.examplePassword,
+                    isObscure: isObscure,
+                    icon: IconButton(
+                      icon: Icon(
+                        isObscure ? Icons.remove_red_eye : Icons.visibility_off,
+                      ),
+                      onPressed: () => setState(() {
+                        isObscure = !isObscure;
+                      }),
+                    ),
+                    validator: (value) =>
+                        passwordValidator(value, passwordController.text),
+                  ),
+                  const BoxSpacer(),
+                  MyButton(
+                    text: Presents.signUp,
+                    onTap: signIn,
+                  ),
+                  const BoxSpacer(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Text(Presents.alreadyAMember),
+                      TextButton(
+                        onPressed: widget.onPressed,
+                        child: Text(
+                          Presents.login,
+                          style: TextStyle(
+                            color: Theme.of(context).colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
                 ],
               ),
-            ],
+            ),
           ),
         ),
       ),
